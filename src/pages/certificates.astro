@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+import eCornellCertificate from "../assets/eCornell Certificate.png";
+import AOSInit from "../components/AOSInit.astro";
+
+const certificates = [
+  [
+    {
+      label: "Computer Science Bachelor's Degree",
+      href: "https://www.parchment.com/u/award/38c41f7afbc7d9bfc4a3f15db2665c85",
+      src: "https://res.cloudinary.com/dnkxmjpxy/image/upload/v1649614971/preview-lg_lyrqyg.jpg",
+    },
+    {
+      label: "Codepath iOS course",
+      href: "https://drive.google.com/file/d/126DNHKOjM0eE8rOcbhBXDAQOE7sxyL_x/view",
+      src: "https://res.cloudinary.com/dnkxmjpxy/image/upload/v1650066992/Screen_Shot_2022-04-15_at_7.56.24_PM_j3zh67.png",
+    },
+  ],
+  [
+    {
+      label: "E-Cornell System Design Certificate",
+      href: "https://mycredentials.ecornell.cornell.edu/credential/KofmNVbHng",
+      src: eCornellCertificate,
+    },
+  ],
+];
+---
+
+<BaseLayout title="Abdelrahman Elsayed | Certificates">
+  <div class="App">
+    <NavBar />
+    <AOSInit />
+    <div class="content-wrapper">
+      {certificates.map((group) => (
+        <ul class="certificate_cards_items" data-aos="fade-left">
+          {group.map((cert) => (
+            <li>
+              <div class="certificate_card">
+                <figure class="cards__item__pic-wrap" data-category={cert.label}>
+                  <a rel="noopener noreferrer" href={cert.href} target="_blank">
+                    <img class="cards__item__img" alt={cert.label} src={cert.src} />
+                  </a>
+                </figure>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ))}
+      <h2 style="color: #ff5757">More in progress ...</h2>
+    </div>
+    <Footer />
+  </div>
+</BaseLayout>

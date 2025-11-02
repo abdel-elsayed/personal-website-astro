@@ -1,0 +1,45 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  first: string;
+  second?: string;
+  third?: string;
+  fourth?: string;
+  fifth?: string;
+  date: string;
+  companyLogo?: string;
+  url?: string;
+}
+
+const { title, subtitle, first, second, third, fourth, fifth, date, companyLogo, url } =
+  Astro.props;
+
+const entries = [first, second, third, fourth, fifth].filter(Boolean) as string[];
+---
+
+<ul class="experience-item">
+  <ul style="list-style: none; display: flex">
+    <li>
+      <strong>{title}</strong>
+      {subtitle && <p class="experience-subtitle">{subtitle}</p>}
+    </li>
+    {companyLogo && (
+      <li style="margin-left: auto">
+        {url ? (
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <button type="button">
+              <img alt="company logo" class="company-logo" src={companyLogo} />
+            </button>
+          </a>
+        ) : (
+          <img alt="company logo" class="company-logo" src={companyLogo} />
+        )}
+      </li>
+    )}
+  </ul>
+  {entries.map((entry) => (
+    <li>- {entry}</li>
+  ))}
+  <li class="experience-date">{date}</li>
+</ul>

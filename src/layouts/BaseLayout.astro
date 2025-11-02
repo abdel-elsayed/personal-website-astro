@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Abdelrahman Elsayed | Software Engineer",
+  description = "Portfolio site for Abdelrahman Elsayed showcasing experience, projects, and certificates.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-dymI1YJ1YRaSPo6e7iT730cdpShUMpOWcZH/5LiCFYl8aAkaI0s5momkGLumZ5qX6Ch12RSjhJ4qzj8j40PpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    {Astro.head}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

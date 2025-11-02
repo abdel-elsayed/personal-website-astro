@@ -1,0 +1,230 @@
+.navbar {
+  /* background: linear-gradient(90deg, #1d3557 0%, #162b47 100%); */
+  background: transparent;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+}
+.white-navbar {
+  /* background: linear-gradient(90deg, #1d3557 0%, #162b47 100%); */
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.5s ease;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  max-width: 1500px;
+}
+
+.navbar-logo {
+  color: #3b5272;
+  justify-self: start;
+  margin-left: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  justify-content: end;
+  width: 60vw;
+  margin-right: 2rem;
+}
+
+/* .nav-item {
+  height: 40px;
+} */
+
+.nav-links {
+  color: #3b5272;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  /* padding: 0.5rem 1rem; */
+  margin-right: 2rem;
+}
+
+.nav-links:hover {
+  border-bottom: 4px solid #e63946;
+  transition: all 0.2s ease-out;
+}
+
+.fa-bars {
+  color: #fff;
+}
+
+.nav-links-mobile {
+  display: flex;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.navbar__link--active {
+  border-bottom: 4px solid #e63946;
+  transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width: 960px) {
+  .NavbarItems {
+    position: relative;
+  }
+
+  .logo-text {
+    font-size: 1.8rem;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    position: absolute;
+    top: 80px;
+    left: -120%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+  .navbar__link--active {
+    background-color: #e63946;
+    color: white;
+    border-radius: 0;
+  }
+  .nav-menu.active {
+    background: rgba(255, 255, 255, 0.8);
+    left: 0;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-links {
+    text-align: center;
+    width: 100%;
+    display: table;
+    padding: 13px 0;
+  }
+
+  .nav-links:hover {
+    background-color: #e63946;
+    color: whit;
+    border-radius: 0;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    font-size: 1rem;
+    top: 0;
+    left: 0;
+    transform: translate(25%, 50%);
+    margin-left: 0px;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .fa-times {
+    color: #3b5272;
+    font-size: 2rem;
+  }
+  .fa-bars {
+    color: #3b5272;
+  }
+
+  .nav-links-mobile {
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+    border-radius: 4px;
+    width: 80%;
+    text-decoration: none;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: #fff;
+    padding: 14px 20px;
+    border: 1px solid #fff;
+    transition: all 0.3s ease-out;
+  }
+
+  .nav-links-mobile:hover {
+    background: #fff;
+    color: #1d3557;
+    transition: 250ms;
+  }
+}
+@media screen and (max-width: 280px) {
+  .navbar-logo {
+    margin-left: 0;
+  }
+}
+
+:root {
+  --primary: #fff;
+}
+
+.btn {
+  padding: 8px 20px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background-color: var(--primary);
+  color: #1d3557;
+  border: 1px solid var(--primary);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 20px;
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.btn--medium {
+  padding: 8px 20px;
+  font-size: 18px;
+}
+
+.btn--large {
+  margin-top: 0.5rem;
+  padding: 12px 26px;
+  font-size: 20px;
+}
+
+.btn--large:hover,
+.btn--medium:hover {
+  margin-top: 0.5rem;
+  transition: all 0.3s ease-out;
+  background: rgb(202, 177, 177);
+  color: #ffffff;
+  transition: 250ms;
+}

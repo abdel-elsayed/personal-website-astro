@@ -1,0 +1,10 @@
+.contact-container {
+  background-color: rgb(29, 44, 56);
+  margin-top: 50%;
+  left: 50%;
+  top: 50%;
+  height: 200px;
+  margin-top: -100px; /* half of you height */
+  width: 400px;
+  margin-left: -200px; /* half of you width */
+}

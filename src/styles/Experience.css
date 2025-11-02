@@ -1,0 +1,73 @@
+.experience-container {
+  align-items: center;
+  width: 60%;
+  background: transparent;
+  margin: 2rem auto 2rem auto;
+  border: 0.2rem solid #3b5272;
+  border-radius: 3%;
+}
+
+.experience-item {
+  list-style: none;
+  color: #3b5272;
+  padding: 2rem;
+  text-shadow: none;
+  line-height: 25px;
+  font-family: "Gill Sans", Arial, Helvetica, sans-serif, "Gill Sans MT",
+    "Trebuchet MS" !important;
+  /* font-weight: 500; */
+  font-size: 18px;
+}
+
+.experience-item > li {
+  padding-top: 1.2rem;
+  letter-spacing: 2.5px;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 1rem;
+}
+.experience-item > li > img {
+  width: 24px !important;
+  height: 24px !important;
+  margin-left: auto;
+}
+
+.experience-header {
+  margin-bottom: 0rem;
+  text-decoration: underline;
+}
+
+.experience-subtitle {
+  margin-top: 0.2rem;
+  text-decoration: underline;
+  color: #457b9d;
+}
+.company-logo {
+  aspect-ratio: fit;
+  width: 100px;
+  max-height: 70px;
+}
+.experience-date {
+  margin-top: 1rem;
+  text-align: center;
+  color: #be837d;
+}
+
+.experience-item > li.experience-date {
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .experience-container {
+    width: 95%;
+  }
+  .company-logo {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 1366px) and (min-width: 1024px) {
+  .experience-container {
+    width: 95%;
+  }
+}

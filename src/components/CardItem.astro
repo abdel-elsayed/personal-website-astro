@@ -1,0 +1,94 @@
+---
+export interface Props {
+  cardType?: string;
+  vidSrc?: string;
+  src?: string;
+  text: string;
+  label: string;
+  techs?: { src: string; alt: string }[];
+  pathSource?: string;
+  pathLink?: string;
+  pathSand?: string;
+  tags?: string[];
+}
+
+const {
+  cardType,
+  vidSrc,
+  src,
+  text,
+  label,
+  techs = [],
+  pathSource = "",
+  pathLink = "",
+  pathSand = "",
+  tags = [],
+} = Astro.props;
+
+const itemClass =
+  cardType === "certificates_card_item" ? "cards__item certificates_card_item" : "cards__item";
+---
+
+<li class={itemClass}>
+  <div class="cards__item__link">
+    <figure class="cards__item__pic-wrap" data-category={label}>
+      {vidSrc ? (
+        <iframe
+          class="cards__item__img"
+          src={vidSrc}
+          title={label}
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      ) : (
+        src && <img class="cards__item__img" alt="Project" src={src} />
+      )}
+    </figure>
+    <div class="cards__item__info">
+      <p class="cards__item__text">{text}</p>
+      {pathSource && (
+        <a
+          class="link-button"
+          rel="noopener noreferrer"
+          href={pathSource}
+          target="_blank"
+        >
+          {cardType === "certificates_card_item" ? "View Certificate" : "Source Code"}
+        </a>
+      )}
+      {pathLink && (
+        <a class="link-button" rel="noopener noreferrer" href={pathLink} target="_blank">
+          View live
+        </a>
+      )}
+      {pathSand && (
+        <a class="link-button" rel="noopener noreferrer" href={pathSand} target="_blank">
+          CodeSandBox Link
+        </a>
+      )}
+      <hr style="margin-top: 1rem" />
+      {techs.length > 0 && (
+        <ul
+          style="display: flex; justify-content: center; list-style-type: none; padding: 0.1rem; margin-top: 0.2rem; color: white"
+        >
+          {techs.map((icon) => (
+            <li>
+              <img src={icon.src} width="40" height="40" alt={icon.alt} />
+            </li>
+          ))}
+        </ul>
+      )}
+      <hr style="margin-top: 0.4rem" />
+      {tags.length > 0 && (
+        <ul
+          style="text-align: left; list-style-type: none; padding: 0.5rem; margin: 0.5rem; font-weight: bold"
+        >
+          {tags.map((tag) => (
+            <p style="color: white">#{tag}</p>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+</li>

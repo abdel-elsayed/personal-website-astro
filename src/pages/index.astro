@@ -1,16 +1,49 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+import TitleMessage from "../components/TitleMessage.astro";
+import Footer from "../components/Footer.astro";
+import homeAnimation from "../assets/HomePageAnimation.json";
+import AOSInit from "../components/AOSInit.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Abdelrahman Elsayed | Home">
+  <div class="App">
+    <NavBar />
+    <AOSInit />
+    <div class="content-wrapper">
+      <div class="main-container">
+        <div>
+          <TitleMessage />
+        </div>
+        <div class="left-container">
+          <div class="illustration" data-home-illustration></div>
+        </div>
+      </div>
+    </div>
+    <script
+      type="application/json"
+      id="home-animation-data"
+      set:html={JSON.stringify(homeAnimation)}
+    ></script>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script type="module">
+  import lottie from "lottie-web";
+
+  const container = document.querySelector("[data-home-illustration]");
+  const dataEl = document.querySelector("#home-animation-data");
+  const animationData = dataEl?.textContent ? JSON.parse(dataEl.textContent) : null;
+
+  if (container && animationData) {
+    lottie.loadAnimation({
+      container,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData,
+    });
+  }
+</script>

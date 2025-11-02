@@ -1,0 +1,73 @@
+---
+import logo from "../assets/dazzle-2.png";
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About me" },
+  { href: "/projects", label: "Projects" },
+  { href: "/certificates", label: "Certificates" },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+---
+
+<nav class="navbar" data-nav>
+  <div class="navbar-container">
+    <a class="navbar-logo" href="/" data-logo>
+      <div class="logo-text">A_ELSAYED</div>
+      <img src={logo.src} alt="logo" style="width: 2em" />
+    </a>
+    <button class="menu-icon" type="button" data-menu-toggle aria-label="Toggle navigation">
+      <i class="fas fa-bars" data-menu-icon></i>
+    </button>
+    <ul class="nav-menu" data-nav-menu>
+      {navItems.map((item) => {
+        const normalised = item.href.replace(/\/+$/, "") || "/";
+        const isActive = currentPath === normalised;
+        return (
+          <li class="nav-item">
+            <a
+              class={`nav-links ${isActive ? "navbar__link--active" : ""}`}
+              href={item.href}
+              data-nav-link
+            >
+              {item.label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const nav = document.querySelector("[data-nav]");
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const navMenu = document.querySelector("[data-nav-menu]");
+  const icon = document.querySelector("[data-menu-icon]");
+  const links = document.querySelectorAll("[data-nav-link]");
+
+  if (toggle && navMenu && icon) {
+    const setState = (open) => {
+      navMenu.classList.toggle("active", open);
+      nav?.classList.toggle("white-navbar", open);
+      icon.classList.toggle("fa-bars", !open);
+      icon.classList.toggle("fa-times", open);
+    };
+
+    let isOpen = false;
+
+    toggle.addEventListener("click", () => {
+      isOpen = !isOpen;
+      setState(isOpen);
+    });
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (!isOpen) return;
+        isOpen = false;
+        setState(false);
+      });
+    });
+  }
+</script>

@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.3"
+    "astro": "^5.15.3",
+    "aos": "^2.3.4",
+    "lottie-web": "^5.12.2"
   }
 }

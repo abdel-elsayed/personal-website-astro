@@ -1,0 +1,102 @@
+.titleMessage {
+  text-align: center;
+}
+
+strong {
+  font-size: 1.25em;
+}
+
+.titleMessage {
+  color: rgb(7, 46, 75);
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  font-weight: 100;
+  letter-spacing: 7px;
+}
+
+.main {
+  font-size: 50px;
+}
+
+.sub {
+  font-size: 27px;
+  letter-spacing: 2px;
+}
+
+.main-btns {
+  display: flex;
+  flex-direction: column;
+}
+.social-button {
+  display: flex;
+  margin: 20px auto;
+  justify-content: center;
+  align-items: center;
+}
+.logo-image:hover{
+  transform:scale(1.2, 1.2);
+}
+.resume-button {
+  display: flex;
+  letter-spacing: 3px;
+  justify-content: center;
+  align-items: center;
+}
+.learn-more-button {
+  border: 1px solid rgb(7, 46, 75);
+  transition: all 0.3s ease-out;
+  padding: 8px 10px;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+.button-primary {
+  background-color: rgb(7, 46, 75);
+  color: white;
+  border: 1px solid rgb(7, 46, 75);
+  transition: all 0.3s ease-out;
+  text-align: center;
+  padding: 12px 26px;
+  font-size: 20px;
+  text-decoration: none;
+}
+.button-outline {
+  background-color: transparent;
+  color: rgb(7, 46, 75);
+  border: 1px solid rgb(7, 46, 75);
+  transition: all 0.3s ease-out;
+  padding: 12px 26px;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+.button-outline:hover {
+  transition: all 0.3s ease-out;
+  background: #e63946;
+  color: #ffffff;
+  transition: 250ms;
+}
+.resume:hover {
+  background: #e63946;
+}
+.button-primary:hover {
+  transition: all 0.3s ease-out;
+  background: #e63946;
+  color: #ffffff;
+  transition: 250ms;
+}
+.learn-more-button:hover {
+  background-color: rgb(248, 248, 248);
+  color: rgb(5, 5, 5);
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    font-size: 30px;
+  }
+  .titleMessage {
+    margin-top: 2rem;
+  }
+  div {
+    text-size-adjust: 10px;
+  }
+}

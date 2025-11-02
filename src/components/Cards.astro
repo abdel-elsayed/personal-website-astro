@@ -1,0 +1,191 @@
+---
+import CardItem from "./CardItem.astro";
+import projectsAnimation from "../assets/data.json";
+import mouseAnimation from "../assets/LottieMouse.json";
+
+const icon = (slug: string, alt: string) => ({
+  src: `https://cdn.simpleicons.org/${slug}/e63946`,
+  alt,
+});
+
+const projectRows = [
+  [
+    {
+      cardType: "cards__item",
+      vidSrc: "https://www.youtube.com/embed/5SRHJDLT8e4",
+      text: "Object-Oriented-Programming Java/JavaFX game",
+      label: "Maze-Runner (Desktop)",
+      techs: [icon("java", "Java logo")],
+      pathSource: "https://github.com/abdel-elsayed/Maze-Runner",
+      tags: ["Software Engineering", "OOP", "GUI", "2D-Game"],
+    },
+    {
+      cardType: "cards__item",
+      vidSrc: "https://www.youtube.com/embed/2ymdGQBQ6Cg",
+      text: "Personal Portfolio Website",
+      label: "A_ELSAYED (Web)",
+      techs: [icon("nodedotjs", "Node.js logo"), icon("react", "React logo")],
+      pathSource: "https://github.com/abdel-elsayed/personal-portfolio",
+      pathLink: "https://abdelrahman-elsayed.netlify.app/",
+      tags: ["web-development", "Personal-Website"],
+    },
+  ],
+  [
+    {
+      cardType: "cards__item",
+      src: "https://techkhabaren.files.wordpress.com/2012/06/zip.jpg",
+      text: "C++ File Compression program using Huffman-code",
+      label: "File Compression (Desktop)",
+      techs: [icon("cplusplus", "C++ logo")],
+      pathSource: "https://github.com/abdel-elsayed/FileCompression",
+      tags: ["Software Engineering", "Algorithms", "Console", "Huffman-code"],
+    },
+    {
+      cardType: "cards__item",
+      vidSrc: "https://www.youtube.com/embed/RYkkgoIA2D4",
+      text: "Full-stack Social-Media Web Application using MERNG stack",
+      label: "Enviromania (Web)",
+      techs: [
+        icon("graphql", "GraphQL logo"),
+        icon("nodedotjs", "Node.js logo"),
+        icon("react", "React logo"),
+        icon("redux", "Redux logo"),
+        icon("mongodb", "MongoDB logo"),
+      ],
+      pathSource: "https://github.com/abdel-elsayed/Cap-Stone-TTP-frontend",
+      pathLink: "https://enviromania.netlify.app/",
+      tags: ["web-development", "Full-stack"],
+    },
+  ],
+  [
+    {
+      cardType: "cards__item",
+      src: "https://miro.medium.com/max/1400/1*sMryEXZVPKFjGNcfSzE8Mw.jpeg",
+      text: "Implementation of data structures and Algorithms in C++",
+      label: "Data structures (Desktop)",
+      techs: [icon("cplusplus", "C++ logo")],
+      pathSource: "https://github.com/abdel-elsayed/Data-Structures",
+      tags: ["Data-structures", "Algorithms", "Console"],
+    },
+    {
+      cardType: "cards__item",
+      src: "https://res.cloudinary.com/dnkxmjpxy/image/upload/v1614493223/Screen_Shot_2021-02-28_at_1.19.26_AM_qpasf2.png",
+      text: "Full-stack recipe website using React.js, Redux, Node.js and Easybase",
+      label: "Amira's kitchen (Web)",
+      techs: [
+        icon("nodedotjs", "Node.js logo"),
+        icon("react", "React logo"),
+        icon("redux", "Redux logo"),
+      ],
+      pathSource: "https://github.com/abdel-elsayed/amiras-kitchen",
+      pathLink: "https://amira-elsayed-kitchen.netlify.app/Home",
+      tags: ["web-development", "Serverless-CMS"],
+    },
+  ],
+  [
+    {
+      cardType: "cards__item",
+      src: "https://raw.githubusercontent.com/abdel-elsayed/GarageCars/master/lane1.png",
+      text: "C++ simulation of cars arrivals/departures in 2-lanes parking garage.",
+      label: "Garage Cars (Desktop)",
+      techs: [icon("cplusplus", "C++ logo")],
+      pathSource: "https://github.com/abdel-elsayed/GarageCars",
+      tags: ["Data-structures", "Stacks", "Console"],
+    },
+    {
+      cardType: "cards__item",
+      src: "https://raw.githubusercontent.com/abdel-elsayed/Lemonade-E-Commerce-Website/master/images/bagsPageDemo.png",
+      text: "Full-Stack PHP E-commerce website",
+      label: "Lemonade E-commerce (Web)",
+      techs: [
+        icon("php", "PHP logo"),
+        icon("html5", "HTML5 logo"),
+        icon("css3", "CSS3 logo"),
+        icon("heroku", "Heroku logo"),
+      ],
+      pathSource: "https://github.com/abdel-elsayed/Lemonade-E-Commerce-Website",
+      pathLink: "https://lemonade-ecomm.herokuapp.com/php/FrontPage.php",
+      tags: ["web-development", "PHP"],
+    },
+  ],
+  [
+    {
+      cardType: "cards__item",
+      src: "https://res.cloudinary.com/dnkxmjpxy/image/upload/v1614629989/Screen_Shot_2021-03-01_at_3.19.06_PM_fxyhoc.png",
+      text: "Full-Stack clone of Amazon using fire-base and React.js",
+      label: "Amazon clone (Web)",
+      techs: [
+        icon("firebase", "Firebase logo"),
+        icon("stripe", "Stripe logo"),
+        icon("react", "React logo"),
+      ],
+      pathSource: "https://github.com/abdel-elsayed/amazon-clone",
+      pathLink: "https://challenge-e57b8.firebaseapp.com/",
+      tags: ["web-development", "Clone"],
+    },
+  ],
+];
+---
+
+<div class="cards">
+  <div>
+    <div class="image1" data-lottie="projects-hero" style="margin-bottom: 1rem"></div>
+    <h1 style="margin-bottom: 2rem; color: #3b5272">Check out my work</h1>
+    <a href="#project" class="downArrow bounce">
+      <div data-lottie="mouse-pointer" style="height: 90px; width: 90px; margin: 0 auto"></div>
+    </a>
+  </div>
+  <div id="project"></div>
+  <div class="cards__wrapper">
+    {projectRows.map((row) => (
+      <div data-aos="fade-left">
+        <ul class="cards__items">
+          {row.map((item) => (
+            <CardItem {...item} />
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script
+  type="application/json"
+  id="projects-animation-data"
+  set:html={JSON.stringify(projectsAnimation)}
+></script>
+<script
+  type="application/json"
+  id="mouse-animation-data"
+  set:html={JSON.stringify(mouseAnimation)}
+></script>
+<script type="module">
+  import lottie from "lottie-web";
+
+  const hero = document.querySelector("[data-lottie='projects-hero']");
+  const mouse = document.querySelector("[data-lottie='mouse-pointer']");
+  const heroDataEl = document.querySelector("#projects-animation-data");
+  const mouseDataEl = document.querySelector("#mouse-animation-data");
+  const projectsAnimationData = heroDataEl?.textContent ? JSON.parse(heroDataEl.textContent) : null;
+  const mouseAnimationData = mouseDataEl?.textContent ? JSON.parse(mouseDataEl.textContent) : null;
+
+  if (hero && projectsAnimationData) {
+    lottie.loadAnimation({
+      container: hero,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: projectsAnimationData,
+    });
+  }
+
+  if (mouse && mouseAnimationData) {
+    lottie.loadAnimation({
+      container: mouse,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: mouseAnimationData,
+    });
+  }
+</script>

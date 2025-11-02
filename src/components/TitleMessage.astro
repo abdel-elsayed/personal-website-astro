@@ -1,0 +1,92 @@
+---
+import rocket from "../assets/rocket.png";
+import githubLogo from "../assets/github.png";
+import resumeLogo from "../assets/resume.png";
+import linkedInLogo from "../assets/linkedin.png";
+import resumePdf from "../assets/AbdelrahmanElsayed_resume_DEC24.pdf";
+---
+
+<div class="titleMessage">
+  <div class="main text-center">
+    Hello, my name is
+    <br />
+    <span>
+      <strong>Abdelrahman Elsayed</strong>
+      <img src={rocket.src} style="width: 1.2em" alt="astro icon" />
+    </span>
+  </div>
+  <div class="sub">
+    <span data-typewriter aria-live="polite"></span>
+    <div class="social-button">
+      <a
+        rel="noopener noreferrer"
+        href="https://github.com/abdel-elsayed"
+        class="logo-image"
+        target="_blank"
+      >
+        <img src={githubLogo.src} style="width: 2em" alt="GitHub logo" />
+      </a>
+      <a
+        rel="noopener noreferrer"
+        href={resumePdf}
+        class="logo-image"
+        target="_blank"
+      >
+        <img
+          src={resumeLogo.src}
+          style="width: 2em; margin: 0 1rem"
+          alt="Resume icon"
+        />
+      </a>
+      <a
+        rel="noopener noreferrer"
+        href="https://www.linkedin.com/in/abdelrahman-elsayed-318539145/"
+        class="logo-image"
+        target="_blank"
+      >
+        <img
+          src={linkedInLogo.src}
+          style="width: 2em"
+          alt="LinkedIn logo"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const el = document.querySelector("[data-typewriter]");
+  const words = ["iOS Mobile Developer", "Loves web development", "Always Learning"];
+  const typeDelay = 100;
+  const eraseDelay = 60;
+  const pauseDelay = 1500;
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  const tick = () => {
+    if (!el) return;
+    const current = words[wordIndex];
+    const visible = current.slice(0, charIndex);
+    el.textContent = visible;
+
+    if (!deleting && charIndex === current.length) {
+      deleting = true;
+      setTimeout(tick, pauseDelay);
+      return;
+    }
+
+    if (deleting && charIndex === 0) {
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+
+    charIndex += deleting ? -1 : 1;
+    const delay = deleting ? eraseDelay : typeDelay;
+    setTimeout(tick, delay);
+  };
+
+  if (el) {
+    tick();
+  }
+</script>
