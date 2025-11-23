@@ -32,6 +32,7 @@ strong {
   justify-content: center;
   align-items: center;
 }
+ 
 .logo-image:hover{
   transform:scale(1.2, 1.2);
 }

@@ -7,6 +7,7 @@
   align-items: center;
   font-size: 1.2rem;
   position: sticky;
+  top: 0;
 }
 .white-navbar {
   /* background: linear-gradient(90deg, #1d3557 0%, #162b47 100%); */
@@ -80,6 +81,17 @@
   display: none;
 }
 
+/* Remove default button border/outline for hamburger */
+.menu-icon {
+  border: none;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-icon:focus { outline: none; }
+.menu-icon::-moz-focus-inner { border: 0; }
+
 .navbar__link--active {
   border-bottom: 4px solid #e63946;
   transition: all 0.2s ease-out;
@@ -146,6 +158,10 @@
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
+    border: none;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
   }
 
   .fa-times {

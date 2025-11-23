@@ -3,8 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import NavBar from "../components/NavBar.astro";
 import TitleMessage from "../components/TitleMessage.astro";
 import Footer from "../components/Footer.astro";
-import homeAnimation from "../assets/HomePageAnimation.json";
 import AOSInit from "../components/AOSInit.astro";
+import initHomeLottieUrl from "../scripts/initHomeLottie.ts?url";
 ---
 
 <BaseLayout title="Abdelrahman Elsayed | Home">
@@ -13,7 +13,7 @@ import AOSInit from "../components/AOSInit.astro";
     <AOSInit />
     <div class="content-wrapper">
       <div class="main-container">
-        <div>
+        <div class="title-container">
           <TitleMessage />
         </div>
         <div class="left-container">
@@ -21,29 +21,8 @@ import AOSInit from "../components/AOSInit.astro";
         </div>
       </div>
     </div>
-    <script
-      type="application/json"
-      id="home-animation-data"
-      set:html={JSON.stringify(homeAnimation)}
-    ></script>
     <Footer />
   </div>
 </BaseLayout>
 
-<script type="module">
-  import lottie from "lottie-web";
-
-  const container = document.querySelector("[data-home-illustration]");
-  const dataEl = document.querySelector("#home-animation-data");
-  const animationData = dataEl?.textContent ? JSON.parse(dataEl.textContent) : null;
-
-  if (container && animationData) {
-    lottie.loadAnimation({
-      container,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData,
-    });
-  }
-</script>
+<script type="module" src={initHomeLottieUrl}></script>

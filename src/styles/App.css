@@ -1,16 +1,39 @@
+.App, html, body {
+  height: auto;
+}
 * {
   margin: 0;
   padding: 0;
   font-family: "Dosis", sans-serif;
 }
 
+:root {
+  --nav-h: 80px;
+  --footer-h: 64px;
+}
+
 .App {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Prefer small viewport unit to avoid URL-bar issues on mobile */
+  min-height: 100svh;
+  /* fallbacks */
+  min-height: 100dvh;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@supports not (height: 100svh) {
+  .App {
+    min-height: 100dvh;
+  }
 }
 
 .content-wrapper {
-  padding-bottom: 2.5rem; /* Footer height */
+  flex: 1 1 auto;
+  /* Let flexbox handle the remaining height to avoid off-by-one scroll */
+  min-height: 0;
 }
 
 .fade-appear,

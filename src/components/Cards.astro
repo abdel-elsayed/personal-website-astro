@@ -1,7 +1,6 @@
 ---
 import CardItem from "./CardItem.astro";
-import projectsAnimation from "../assets/data.json";
-import mouseAnimation from "../assets/LottieMouse.json";
+import initCardsLottieUrl from "../scripts/initCardsLottie.ts?url";
 
 const icon = (slug: string, alt: string) => ({
   src: `https://cdn.simpleicons.org/${slug}/e63946`,
@@ -148,44 +147,4 @@ const projectRows = [
     ))}
   </div>
 </div>
-
-<script
-  type="application/json"
-  id="projects-animation-data"
-  set:html={JSON.stringify(projectsAnimation)}
-></script>
-<script
-  type="application/json"
-  id="mouse-animation-data"
-  set:html={JSON.stringify(mouseAnimation)}
-></script>
-<script type="module">
-  import lottie from "lottie-web";
-
-  const hero = document.querySelector("[data-lottie='projects-hero']");
-  const mouse = document.querySelector("[data-lottie='mouse-pointer']");
-  const heroDataEl = document.querySelector("#projects-animation-data");
-  const mouseDataEl = document.querySelector("#mouse-animation-data");
-  const projectsAnimationData = heroDataEl?.textContent ? JSON.parse(heroDataEl.textContent) : null;
-  const mouseAnimationData = mouseDataEl?.textContent ? JSON.parse(mouseDataEl.textContent) : null;
-
-  if (hero && projectsAnimationData) {
-    lottie.loadAnimation({
-      container: hero,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData: projectsAnimationData,
-    });
-  }
-
-  if (mouse && mouseAnimationData) {
-    lottie.loadAnimation({
-      container: mouse,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData: mouseAnimationData,
-    });
-  }
-</script>
+<script type="module" src={initCardsLottieUrl}></script>

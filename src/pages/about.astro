@@ -4,8 +4,8 @@ import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import Experience from "../components/Experience.astro";
 import Skills from "../components/Skills.astro";
-import mouseAnimation from "../assets/LottieMouse.json";
 import AOSInit from "../components/AOSInit.astro";
+import initAboutLottieUrl from "../scripts/initAboutLottie.ts?url";
 
 const experiences = [
   {
@@ -183,20 +183,4 @@ const activities = [
     <Footer />
   </div>
 </BaseLayout>
-
-<script type="module">
-  import lottie from "lottie-web";
-
-  const mouse = document.querySelector("[data-lottie='mouse-pointer']");
-  const mouseAnimationData = {JSON.stringify(mouseAnimation)};
-
-  if (mouse) {
-    lottie.loadAnimation({
-      container: mouse,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData: mouseAnimationData,
-    });
-  }
-</script>
+<script type="module" src={initAboutLottieUrl}></script>

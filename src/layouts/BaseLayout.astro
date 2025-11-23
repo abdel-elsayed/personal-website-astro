@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import pageTransitionsUrl from "../scripts/pageTransitions.ts?url";
 
 export interface Props {
   title?: string;
@@ -28,13 +29,11 @@ const {
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-dymI1YJ1YRaSPo6e7iT730cdpShUMpOWcZH/5LiCFYl8aAkaI0s5momkGLumZ5qX6Ch12RSjhJ4qzj8j40PpQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
     {Astro.head}
   </head>
-  <body>
+  <body style="opacity:0; transition: opacity 300ms ease">
+    <script type="module" src={pageTransitionsUrl}></script>
     <slot />
   </body>
 </html>

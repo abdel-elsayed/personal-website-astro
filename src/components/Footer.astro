@@ -1,5 +1,6 @@
 ---
 import resumePdf from "../assets/AbdelrahmanElsayed_resume_DEC24.pdf";
+const year = new Date().getFullYear();
 ---
 
 <footer class="footer-container">
@@ -50,11 +51,9 @@ import resumePdf from "../assets/AbdelrahmanElsayed_resume_DEC24.pdf";
       <i class="fas fa-id-badge"></i>
     </a>
   </div>
-  <div style="padding-top: 2rem">
-    <p class="website-rights">
-      Designed, developed, deployed and maintained by yours truly using React.
-      <br />
-      A_ELSAYED © 2021
-    </p>
-  </div>
+  <p class="website-rights">
+    Built from scratch with Astro. Designed, developed, deployed and maintained by yours truly.
+    <br />
+    A_ELSAYED © {year} · <a href="https://github.com/abdel-elsayed" target="_blank" rel="noopener noreferrer">Source</a>
+  </p>
 </footer>
