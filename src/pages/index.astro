@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar.astro";
 import TitleMessage from "../components/TitleMessage.astro";
 import Footer from "../components/Footer.astro";
 import AOSInit from "../components/AOSInit.astro";
-import initHomeLottieUrl from "../scripts/initHomeLottie.ts?url";
+ 
 ---
 
 <BaseLayout title="Abdelrahman Elsayed | Home">
@@ -25,4 +25,21 @@ import initHomeLottieUrl from "../scripts/initHomeLottie.ts?url";
   </div>
 </BaseLayout>
 
-<script type="module" src={initHomeLottieUrl}></script>
+<script type="module">
+  import lottie from "lottie-web";
+  import homeAnimation from "../assets/HomePageAnimation.json";
+
+  const container = document.querySelector("[data-home-illustration]");
+  if (container) {
+    requestAnimationFrame(() => {
+      lottie.loadAnimation({
+        container,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        animationData: homeAnimation,
+        rendererSettings: { preserveAspectRatio: "xMidYMid meet", progressiveLoad: true },
+      });
+    });
+  }
+</script>

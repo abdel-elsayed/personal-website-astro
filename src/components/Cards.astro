@@ -1,6 +1,6 @@
 ---
 import CardItem from "./CardItem.astro";
-import initCardsLottieUrl from "../scripts/initCardsLottie.ts?url";
+ 
 
 const icon = (slug: string, alt: string) => ({
   src: `https://cdn.simpleicons.org/${slug}/e63946`,
@@ -147,4 +147,35 @@ const projectRows = [
     ))}
   </div>
 </div>
-<script type="module" src={initCardsLottieUrl}></script>
+<script type="module">
+  import lottie from "lottie-web";
+  import projectsAnimation from "../assets/data.json";
+  import mouseAnimation from "../assets/LottieMouse.json";
+
+  const hero = document.querySelector("[data-lottie='projects-hero']");
+  const mouse = document.querySelector("[data-lottie='mouse-pointer']");
+
+  if (hero) {
+    requestAnimationFrame(() => {
+      lottie.loadAnimation({
+        container: hero,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        animationData: projectsAnimation,
+      });
+    });
+  }
+
+  if (mouse) {
+    requestAnimationFrame(() => {
+      lottie.loadAnimation({
+        container: mouse,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        animationData: mouseAnimation,
+      });
+    });
+  }
+</script>
