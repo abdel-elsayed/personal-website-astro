@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import pageTransitionsUrl from "../scripts/pageTransitions.ts?url";
 
 export interface Props {
   title?: string;
@@ -33,7 +32,9 @@ const {
     {Astro.head}
   </head>
   <body style="opacity:0; transition: opacity 300ms ease">
-    <script type="module" src={pageTransitionsUrl}></script>
+    <script>
+      import "../scripts/pageTransitions.ts";
+    </script>
     <slot />
   </body>
 </html>
