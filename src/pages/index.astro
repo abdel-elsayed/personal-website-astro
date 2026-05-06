@@ -25,21 +25,22 @@ import AOSInit from "../components/AOSInit.astro";
   </div>
 </BaseLayout>
 
-<script type="module">
+<script>
   import lottie from "lottie-web";
-  import homeAnimation from "../assets/HomePageAnimation.json";
 
   const container = document.querySelector("[data-home-illustration]");
   if (container) {
-    requestAnimationFrame(() => {
-      lottie.loadAnimation({
-        container,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        animationData: homeAnimation,
-        rendererSettings: { preserveAspectRatio: "xMidYMid meet", progressiveLoad: true },
+    fetch("/animations/HomePageAnimation.json")
+      .then((r) => r.json())
+      .then((animationData) => {
+        lottie.loadAnimation({
+          container,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData,
+          rendererSettings: { preserveAspectRatio: "xMidYMid meet", progressiveLoad: true },
+        });
       });
-    });
   }
 </script>
