@@ -1,11 +1,29 @@
 ---
 import CardItem from "./CardItem.astro";
- 
 
 const icon = (slug: string, alt: string) => ({
   src: `https://cdn.simpleicons.org/${slug}/e63946`,
   alt,
 });
+
+const featuredProject = {
+  eyebrow: "Professional Work",
+  title: "Lowe's iOS App — MyLow AI Shopping Assistant",
+  description:
+    "Architected the OpenAI Realtime voice chat, owned the in-chat Apple Pay integration, and helped modernize legacy UIKit screens to SwiftUI in a production retail app.",
+  logoSrc: "/images/lowes-logo.png",
+  logoAlt: "Lowe's logo",
+  imageSrc: "/images/mylow-screenshot.png",
+  imageAlt: "Screenshot of MyLow AI shopping assistant in the Lowe's iOS app",
+  appStoreLink: "https://apps.apple.com/us/app/lowes-home-improvement/id457954781",
+  articleLink:
+    "https://corporate.lowes.com/newsroom/press-releases/lowes-launches-first-ai-powered-home-improvement-virtual-advisor-03-05-25",
+  techs: [
+  icon("swift", "Swift logo"),
+  icon("apple", "Apple logo"),
+],
+tags: ["iOS", "AI", "Production", "OpenAI Realtime API"],
+};
 
 const projectRows = [
   [
@@ -127,26 +145,109 @@ const projectRows = [
 ---
 
 <div class="cards">
-  <div>
-    <div class="image1" data-lottie="projects-hero" style="margin-bottom: 1rem"></div>
-    <h1 style="margin-bottom: 2rem; color: #3b5272">Check out my work</h1>
-    <a href="#project" class="downArrow bounce">
-      <div data-lottie="mouse-pointer" style="height: 90px; width: 90px; margin: 0 auto"></div>
+  <div class="cards__hero">
+    <div class="image1" data-lottie="projects-hero"></div>
+    <h1>Check out my work</h1>
+    <p>
+      A mix of professional product work and side projects across iOS, web,
+      backend, and software engineering.
+    </p>
+    <a href="#featured-project" class="downArrow bounce" aria-label="Scroll to featured project">
+      <div data-lottie="mouse-pointer" class="cards__mouse"></div>
     </a>
   </div>
-  <div id="project"></div>
-  <div class="cards__wrapper">
-    {projectRows.map((row) => (
-      <div data-aos="fade-left">
-        <ul class="cards__items">
-          {row.map((item) => (
-            <CardItem {...item} />
-          ))}
-        </ul>
-      </div>
-    ))}
+
+  <div id="featured-project"></div>
+
+ <section class="featured-project" data-aos="fade-up">
+  <div class="featured-project__content">
+    <span class="featured-project__eyebrow">{featuredProject.eyebrow}</span>
+    <p class="featured-project__note">
+  One highlight from a broader set of iOS and product work I contributed to at Lowe’s.
+</p>
+    <h2>{featuredProject.title}</h2>
+    <p class="featured-project__description">{featuredProject.description}</p>
+
+    <div class="featured-project__techs" aria-label="Technology badges">
+      {featuredProject.techs.map((tech) => (
+        <img src={tech.src} alt={tech.alt} />
+      ))}
+    </div>
+
+    <div class="featured-project__tags">
+      {featuredProject.tags.map((tag) => (
+        <span>{tag}</span>
+      ))}
+    </div>
+
+    <div class="featured-project__actions">
+      <a
+        href={featuredProject.appStoreLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="featured-project__button featured-project__button--primary"
+      >
+        View on App Store
+      </a>
+
+      <a
+        href={featuredProject.articleLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="featured-project__button featured-project__button--secondary"
+      >
+        Read about MyLow
+      </a>
+    </div>
   </div>
+
+  <div class="featured-project__visual">
+    <img
+      src={featuredProject.logoSrc}
+      alt={featuredProject.logoAlt}
+      class="featured-project__corner-logo"
+    />
+
+    <div class="featured-project__image-wrap">
+      <img
+        src={featuredProject.imageSrc}
+        alt={featuredProject.imageAlt}
+        class="featured-project__image"
+      />
+    </div>
+  </div>
+</section>
+
+
+
+  <div class="cards__divider" aria-hidden="true"></div>
+
+  <section class="cards__side-projects">
+    <div class="cards__section-heading" data-aos="fade-up">
+      <span>Side Projects</span>
+      <h2>Independent builds and experiments</h2>
+      <p>
+        Personal projects, technical explorations, and academic work across web,
+        mobile, and software engineering.
+      </p>
+    </div>
+
+    <div id="project"></div>
+
+    <div class="cards__wrapper">
+      {projectRows.map((row) => (
+        <div data-aos="fade-left">
+          <ul class="cards__items">
+            {row.map((item) => (
+              <CardItem {...item} />
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
 </div>
+
 <script>
   import lottie from "lottie-web";
   import projectsAnimation from "../assets/data.json";

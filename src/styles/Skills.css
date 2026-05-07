@@ -19,24 +19,52 @@ h3 {
   position: relative;
   margin: 50px 0 45px;
 }
+.skills-list {
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0.1rem;
+  margin-top: 0.2rem;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 72px;
+}
+
+.skill img {
+  display: block;
+}
+
+.skill span {
+  font-size: 0.9rem;
+  color: #1d3557;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
 
 .skills-card {
   background: transparent;
   display: flex;
   flex-flow: column;
   padding: 2rem;
-  margin: 0 1rem;
+  margin: 0 1rem 2rem;
   border: 2px solid #3b5272;
   border-radius: 10px;
   width: 100%;
   box-shadow: 0 10px 30px rgba(3, 3, 3, 0.17);
   -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
   filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-  overflow: hidden;
   text-decoration: none;
-  height: 20rem;
-  margin-bottom: 2rem;
+  height: auto;
+  min-height: 20rem;
+  overflow: visible;
 }
+
 
 .skill {
   margin: 2rem;

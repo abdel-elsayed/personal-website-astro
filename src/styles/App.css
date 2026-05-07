@@ -18,9 +18,7 @@
   flex-direction: column;
   /* Prefer small viewport unit to avoid URL-bar issues on mobile */
   min-height: 100svh;
-  /* fallbacks */
-  min-height: 100dvh;
-  min-height: 100vh;
+
   overflow-x: hidden;
 }
 
